@@ -1,6 +1,6 @@
 # VideoDetective
 
-[![ArXiv](https://img.shields.io/badge/Arxiv-Paper-b31b1b.svg)](https://arxiv.org)
+[![ArXiv](https://img.shields.io/badge/Arxiv-Paper-b31b1b.svg)]([https://arxiv.org](https://arxiv.org/abs/2603.22285))
 [![Task](https://img.shields.io/badge/Task-VideoQA-blue.svg)]()
 [![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://videodetective.github.io)
 
@@ -167,7 +167,7 @@ print(result.answer)
 @misc{yang2026videodetective,
   title = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
   author = {Yang , Ruoliu and Wu, Chu and Shan , Caifeng and He , Ran and Fu , Chaoyou},
-  arxiv={},
+  journal={arXiv preprint arXiv:2603.22285},
   year = {2026}
 }
 ```
