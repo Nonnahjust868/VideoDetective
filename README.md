@@ -1,6 +1,6 @@
 # VideoDetective
 
-[![ArXiv](https://img.shields.io/badge/Arxiv-Paper-b31b1b.svg)]((https://arxiv.org/abs/2603.22285))
+[![ArXiv](https://img.shields.io/badge/Arxiv-Paper-b31b1b.svg)](https://arxiv.org/abs/2603.22285)
 [![Task](https://img.shields.io/badge/Task-VideoQA-blue.svg)]()
 [![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://videodetective.github.io)
 
